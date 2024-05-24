@@ -28,11 +28,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install expo-cli
-        run: npm install --save-dev expo-cli
-
       - name: Start Expo server
-        run: node_modules/.bin/expo start --web &
+        run: npx expo start --web &
         env:
           EXPO_WEB_PORT: 19006
           CI: 1

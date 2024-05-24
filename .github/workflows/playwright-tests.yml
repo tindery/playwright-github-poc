@@ -31,11 +31,11 @@ jobs:
       - name: Start Expo server
         run: npx expo start --web &
         env:
-          EXPO_WEB_PORT: 19006
+          EXPO_WEB_PORT: 8081
           CI: 1
 
       - name: Wait for Expo server to be ready
-        run: npx wait-on http://localhost:19006
+        run: npx wait-on http://localhost:8081
 
       - name: Run tests
         run: npx jest

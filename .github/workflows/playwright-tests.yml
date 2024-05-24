@@ -29,10 +29,17 @@ jobs:
         run: npm install
 
       - name: Start Expo server
-        run: npx expo start --web &
+        run: |
+          echo "Starting Expo server on port 8081..."
+          npx expo start --web --port 8081 &
+          sleep 20
+          echo "Expo server started."
         env:
           EXPO_WEB_PORT: 8081
           CI: 1
+
+      - name: Check if Expo server is running
+        run: curl -v http://localhost:8081
 
       - name: Wait for Expo server to be ready
         run: npx wait-on http://localhost:8081
